@@ -1,86 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mwanga - Your Partner for Uninterrupted Energy</title>
-  <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Google Fonts - Ubuntu -->
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-        html, body {
-            height: 100vh;
-            height: calc(var(--vh, 1vh) * 100);
-          }
-    body {
-      background-color: #F6F6F6;
-      font-family: 'Ubuntu', sans-serif;
-    }
-    .navbar {
-      background-color: #F6F6F6;
-      color: #030606 !important;
-      border-bottom: 1px solid #F6F6F6; /* Thin line below the navbar */
-    }
-    .navbar-brand {
-      font-size: 24px; /* Adjust the font size as needed */
-    }
-    .jumbotron {
-      background-color: #F6F6F6;
-      font-weight: bold;
-    }
-    .cta-btn {
-      border-radius: 40px; /* Rounded border radius */
-      background: linear-gradient(to right, #f1546e, #f7a147); /* Gradient background */
-      color: #030606;
-      padding: 15px;
-      width: 150px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      font-weight: bold; /* Make the font bold */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mwanga Renewables</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --vh: 100vh;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #2A5D50;
+            color: #FFFFFF;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(var(--vh) * 100);
+            position: relative;
+        }
+
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 100px 100px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            z-index: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            background-color: #F4A950;
+            color: #2A5D50;
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .subtitle {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .zigzag {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .zigzag img {
+            width: 50px;
+            height: 10px;
+        }
+
+        .main-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .main-illustration img {
+            max-width: 100px;
+        }
+
+        .main-illustration .main-globe {
+            max-width: 200px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            color: #2A5D50;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card .material-icons {
+            font-size: 3rem;
+            color: #F4A950;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #F4A950;
+            color: #2A5D50;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #d89240;
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .stars img, .zigzag img, .main-illustration img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .main-illustration .main-globe {
+                max-width: 150px;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .card {
+                width: 200px;
+            }
+
+            .cards {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stars {
+                display: none;
+            }
+
+            .zigzag {
+                display: none;
+            }
+
+            .main-illustration img {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark ">
-    <a class="navbar-brand" href="#" style="color: #030606;">Mwanga.</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/about" style="color: #030606;">About Us</a>
-        </li>
-      </ul>
+    <div class="grid"></div>
+    <div class="container">
+        <div class="stars">
+            <img src="static/Illutstrations/star.png" alt="Star">
+            <img src="static/Illutstrations/star.png" alt="Star">
+            <img src="static/Illutstrations/star.png" alt="Star">
+        </div>
+        <h1>Mwanga Renewables</h1>
+        <div class="zigzag">
+            <img src="static/Illutstrations/zigzag_yellow.png" alt="Zigzag">
+            <img src="static/Illutstrations/zigzag_white.png" alt="Zigzag">
+            <img src="static/Illutstrations/zigzag_yellow.png" alt="Zigzag">
+        </div>
+        <p class="subtitle">Illuminate your world with sustainable & clean solar energy solutions.</p>
+        <div class="main-illustration">
+            <img src="static/Illutstrations/human_one.png" alt="Human Illustration">
+            <img class="main-globe" src="static/Illutstrations/main_globe.png" alt="Main Globe">
+            <img src="static/Illutstrations/human_two.png" alt="Human Illustration">
+        </div>
+        <div class="cards">
+            <div class="card">
+                <span class="material-icons">power</span>
+                <h3>Portable Power Banks</h3>
+                <p>Stay connected wherever you go with our reliable and efficient power banks.</p>
+            </div>
+            <div class="card">
+                <span class="material-icons">solar_power</span>
+                <h3>Solar Kits</h3>
+                <p>Complete solar energy solutions for your home and outdoor needs.</p>
+            </div>
+        </div>
+        <a href="/register" class="btn">View More</a>
     </div>
-  </nav>
+    <!-- <footer>
+        &copy; 2024 Mwanga Renewables. All rights reserved.
+    </footer> -->
+    <script>
+        const resizeOps = () => {
+            document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+        };
 
-  <!-- Jumbotron -->
-  <div class="jumbotron">
-    <div class="container text-left">
-      <h1 class="display-4">Welcome to Mwanga</h1>
-      <p class="lead">Our mission is to increase the adoption of renewable energy, by creating a platform for sustainable and abundant energy for future generations.</p>
-      <div style="max-width: 80%; margin-bottom: 20px;">
-        <img src="static/illustration.png" alt="Your Image Description" style="width: 100%; height:  100%;">
-      </div>
-      <a class="btn btn-lg cta-btn" href="index">Join Us</a>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS and Popper.js CDN -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    const resizeOps = () => {
-      document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
-    };
-
-    resizeOps();
-    window.addEventListener("resize", resizeOps);
-  </script>
+        resizeOps();
+        window.addEventListener("resize", resizeOps);
+    </script>
 </body>
 </html>

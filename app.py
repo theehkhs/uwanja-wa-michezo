@@ -40,7 +40,9 @@ auth = firebase.auth()
 @app.route('/')
 def home():
     print("Home page")
-    return render_template('register.html')
+    # return render_template('register.html')
+    return render_template('home.html')
+    
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
