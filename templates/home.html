@@ -10,13 +10,13 @@
         :root {
             --vh: 100vh;
         }
-
+    
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+    
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #2A5D50;
@@ -28,7 +28,7 @@
             min-height: calc(var(--vh) * 100);
             position: relative;
         }
-
+    
         .grid {
             position: absolute;
             top: 0;
@@ -36,17 +36,17 @@
             width: 100%;
             height: 100%;
             background-size: 100px 100px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), 
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
             z-index: 0;
         }
-
+    
         .container {
             text-align: center;
             padding: 2rem;
             z-index: 1;
         }
-
+    
         h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 3.5rem;
@@ -57,7 +57,7 @@
             margin-bottom: 1rem;
             border-radius: 5px;
         }
-
+    
         .stars {
             display: flex;
             justify-content: center;
@@ -65,12 +65,12 @@
             gap: 1rem;
             margin-bottom: 1rem;
         }
-
+    
         .stars img {
             width: 30px;
             height: 30px;
         }
-
+    
         .subtitle {
             font-size: 1.7rem;
             font-weight: 600;
@@ -78,19 +78,19 @@
             margin-bottom: 2rem;
             position: relative;
         }
-
+    
         .zigzag {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-bottom: 2rem;
         }
-
+    
         .zigzag img {
             width: 50px;
             height: 10px;
         }
-
+    
         .main-illustration {
             display: flex;
             justify-content: center;
@@ -98,15 +98,17 @@
             gap: 2rem;
             margin-bottom: 2rem;
         }
-
+    
         .main-illustration img {
             max-width: 100px;
+            height: auto;
         }
-
+    
         .main-illustration .main-globe {
             max-width: 200px;
+            height: auto;
         }
-
+    
         .cards {
             display: flex;
             justify-content: center;
@@ -114,7 +116,7 @@
             margin: 2rem 0;
             flex-wrap: wrap;
         }
-
+    
         .card {
             background-color: #FFFFFF;
             color: #2A5D50;
@@ -124,23 +126,23 @@
             width: 250px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
+    
         .card .material-icons {
             font-size: 3rem;
             color: #F4A950;
             margin-bottom: 1rem;
         }
-
+    
         .card h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
-
+    
         .card p {
             font-size: 1rem;
             margin-bottom: 1rem;
         }
-
+    
         .btn {
             display: inline-block;
             background-color: #F4A950;
@@ -151,69 +153,171 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
-
+    
         .btn:hover {
             background-color: #d89240;
         }
-
+    
         footer {
             margin-top: 2rem;
             font-size: 0.9rem;
         }
-
+    
         .illustration img {
             max-width: 100%;
             height: auto;
         }
-
+    
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2A5D50;
+            padding: 1rem 2rem;
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+        .navbar .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #F4A950;
+            font-weight: 700;
+        }
+    
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .nav-links li {
+            display: inline;
+        }
+    
+        .nav-links a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+    
+        .nav-links a:hover {
+            color: #F4A950;
+        }
+    
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.3rem;
+        }
+    
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #FFFFFF;
+            border-radius: 2px;
+        }
+    
+        /* Responsive styles */
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+    
+            .nav-links {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #2A5D50;
+                width: 100%;
+                transform: translateY(-100%);
+                display: none;
+            }
+    
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+            }
+    
+            .nav-links li {
+                text-align: center;
+                margin: 1rem 0;
+            }
+    
             .stars img, .zigzag img, .main-illustration img {
-                width: 20px;
-                height: 20px;
+                width: 50px;
+                height: auto;
             }
-
+    
             .main-illustration .main-globe {
-                max-width: 150px;
+                max-width: 120px;
+                height: auto;
             }
-
+    
             .container {
                 padding: 1rem;
             }
-
+    
             h1 {
                 font-size: 2.5rem;
                 padding: 0.5rem 1rem;
             }
-
+    
             .subtitle {
                 font-size: 1.3rem;
             }
-
+    
             .card {
                 width: 200px;
             }
-
+    
             .cards {
                 gap: 1rem;
             }
         }
-
+    
         @media (max-width: 480px) {
-            .stars {
-                display: none;
+            .stars img, .zigzag img, .main-illustration img {
+                width: 40px;
+                height: auto;
             }
-
-            .zigzag {
-                display: none;
+    
+            .main-illustration .main-globe {
+                max-width: 100px;
+                height: auto;
             }
-
-            .main-illustration img {
-                display: none;
+    
+            .zigzag img, .stars img {
+                display: inline-block;
             }
         }
     </style>
+    
+    
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">Mwanga Renewables</div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     <div class="grid"></div>
     <div class="container">
         <div class="stars">
@@ -247,9 +351,6 @@
         </div>
         <a href="/register" class="btn">View More</a>
     </div>
-    <!-- <footer>
-        &copy; 2024 Mwanga Renewables. All rights reserved.
-    </footer> -->
     <script>
         const resizeOps = () => {
             document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
@@ -257,6 +358,14 @@
 
         resizeOps();
         window.addEventListener("resize", resizeOps);
+
+        // Toggle menu visibility for hamburger menu
+        const toggleMenu = () => {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        };
     </script>
 </body>
+
+
 </html>
