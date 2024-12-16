@@ -16,6 +16,14 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        .spacer {
+            height: 72px;
+        }
+
+        .spacer2 {
+            height: 24px;
+        }
     
         body {
             font-family: 'Roboto', sans-serif;
@@ -45,6 +53,12 @@
             text-align: center;
             padding: 2rem;
             z-index: 1;
+        }
+
+        .container-row{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
         }
     
         h1 {
@@ -299,13 +313,100 @@
                 display: inline-block;
             }
         }
+
+        .description {
+        font-size: 1.2rem;
+        margin: 1rem 0 2rem;
+        color: #F4A950;
+    }
+
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .toggle-button {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #F4A950;
+        color: #2A5D50;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .toggle-button:hover {
+        background-color: #d89240;
+    }
+
+    .toggle-button.active {
+        background-color: #2A5D50;
+        color: #F4A950;
+    }
+
+    .toggle-content {
+        font-size: 1rem;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    .card-container {
+        display: flex; /* Align cards in a row */
+        flex-direction: row; /* Horizontal layout */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        gap: 20px; /* Add spacing between cards */
+        padding: 10px;
+    }
+
+    .card-container::-webkit-scrollbar {
+        height: 8px; /* Scrollbar height */
+    }
+
+    .card-container::-webkit-scrollbar-thumb {
+        background: #ccc; /* Scrollbar color */
+        border-radius: 4px;
+    }
+
+    .card-container::-webkit-scrollbar-track {
+        background: #f6f6f6;
+    }
+
+    .card {
+        flex: 0 0 auto; /* Prevent cards from shrinking */
+        width: 300px; /* Set a consistent card width */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a polished look */
+        border-radius: 8px; /* Smooth corners */
+        background: #fff;
+    }
+
+    .card img {
+        width: 100%; /* Make images responsive */
+        height: 200px; /* Set a fixed height for images */
+        object-fit: cover; /* Crop images to fit the card */
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .card-body {
+        padding: 15px;
+        text-align: center; /* Center-align the content inside the cards */
+    }
+
+    h3 {
+        text-align: left;
+        font-weight: bold;
+        font-family: 'Ubuntu', sans-serif;
+    }
     </style>
     
     
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Mwanga Renewables</div>
+        <div class="logo">Mwanga.</div>
         <div class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -320,36 +421,39 @@
     </nav>
     <div class="grid"></div>
     <div class="container">
+        <div class="spacer"></div>
+    
         <div class="stars">
             <img src="static/Illutstrations/star.png" alt="Star">
             <img src="static/Illutstrations/star.png" alt="Star">
             <img src="static/Illutstrations/star.png" alt="Star">
         </div>
-        <h1>Mwanga Renewables</h1>
+        <h1>Powering your home.</h1>
         <div class="zigzag">
             <img src="static/Illutstrations/zigzag_yellow.png" alt="Zigzag">
             <img src="static/Illutstrations/zigzag_white.png" alt="Zigzag">
             <img src="static/Illutstrations/zigzag_yellow.png" alt="Zigzag">
         </div>
-        <p class="subtitle">Illuminate your world with sustainable & clean solar energy solutions.</p>
-        <div class="main-illustration">
-            <img src="static/Illutstrations/human_one.png" alt="Human Illustration">
-            <img class="main-globe" src="static/Illutstrations/main_globe.png" alt="Main Globe">
-            <img src="static/Illutstrations/human_two.png" alt="Human Illustration">
+        <p class="subtitle">Illuminate your world with clean solar energy.</p>
+    
+        <!-- New Description -->
+        <p class="description">
+            We provide solar solutions to power your life sustainably. 
+            We offer portable power banks for energy on-the-go and solar kits 
+            designed to meet your everyday energy needs with clean and renewable sources.
+        </p>
+    
+        <!-- New Toggle Component -->
+        <div class="toggle-container">
+            <!-- <button class="toggle-button active" onclick="showPowerBanks()">Power Banks</button> -->
+            <button class="toggle-button" onclick="showSolarKits()">View Products</button>
         </div>
-        <div class="cards">
-            <div class="card">
-                <span class="material-icons">power</span>
-                <h3>Portable Power Banks</h3>
-                <p>Stay connected wherever you go with our reliable and efficient power banks.</p>
-            </div>
-            <div class="card">
-                <span class="material-icons">solar_power</span>
-                <h3>Solar Kits</h3>
-                <p>Complete solar energy solutions for your home and outdoor needs.</p>
-            </div>
+    
+        <div id="toggle-content" class="toggle-content">
         </div>
-        <a href="/register" class="btn">View More</a>
+        <div class="spacer"></div> 
+
+        
     </div>
     <script>
         const resizeOps = () => {
@@ -364,8 +468,29 @@
             const navLinks = document.getElementById("navLinks");
             navLinks.classList.toggle("active");
         };
+
+             // JavaScript to handle the toggle
+             const powerBankButton = document.getElementById('powerBankButton');
+        const solarKitButton = document.getElementById('solarKitButton');
+        const toggleContent = document.getElementById('toggleContent');
+
+        powerBankButton.addEventListener('click', () => {
+            toggleContent.textContent = 'Explore our range of power banks, perfect for on-the-go energy needs.';
+            powerBankButton.classList.add('active');
+            solarKitButton.classList.remove('active');
+        });
+
+        solarKitButton.addEventListener('click', () => {
+            toggleContent.textContent = 'Discover our solar kits, ideal for sustainable home or business energy solutions.';
+            solarKitButton.classList.add('active');
+            powerBankButton.classList.remove('active');
+        });
     </script>
 </body>
 
 
 </html>
+
+
+
+  

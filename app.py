@@ -220,6 +220,11 @@ def process_selection2():
     print(session['package'])
     return render_template('delivery.html')
 
+@app.route('/products')
+def products():
+    print("products")
+    return render_template('products.html')
+
 
 @app.route('/order3', methods=['POST'])
 def process_selection3():
