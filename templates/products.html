@@ -7,71 +7,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        :root {
+    :root {
             --vh: 100vh;
         }
-
+    
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        .spacer {
+            height: 72px;
+        }
+
+        .spacer2 {
+            height: 24px;
+        }
+    
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #2A5D50;
             color: #FFFFFF;
             line-height: 1.6;
-        }
-
-        .navbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            background-color: #2A5D50;
-            padding: 1rem 2rem;
-            position: fixed;
+            min-height: calc(var(--vh) * 100);
+            position: relative;
+        }
+    
+        .grid {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 2;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            background-size: 100px 100px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            z-index: 0;
         }
-
-        .navbar .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            color: #F4A950;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links li {
-            display: inline;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #FFFFFF;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #F4A950;
-        }
-
-        .header {
+    
+        .container {
             text-align: center;
-            padding: 6rem 2rem 2rem;
+            padding: 2rem;
+            z-index: 1;
         }
 
-        .header h1 {
+        .container-row{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 3.5rem;
             background-color: #F4A950;
@@ -81,12 +71,335 @@
             margin-bottom: 1rem;
             border-radius: 5px;
         }
-
-        .header p {
-            font-size: 1.5rem;
-            color: #FFFFFF;
-            margin-top: 1rem;
+    
+        .stars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
+    
+        .stars img {
+            width: 30px;
+            height: 30px;
+        }
+    
+        .subtitle {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+    
+        .zigzag {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+    
+        .zigzag img {
+            width: 50px;
+            height: 10px;
+        }
+    
+        .main-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+    
+        .main-illustration img {
+            max-width: 100px;
+            height: auto;
+        }
+    
+        .main-illustration .main-globe {
+            max-width: 200px;
+            height: auto;
+        }
+    
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+    
+        .card {
+            background-color: #FFFFFF;
+            color: #2A5D50;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .card .material-icons {
+            font-size: 3rem;
+            color: #F4A950;
+            margin-bottom: 1rem;
+        }
+    
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+    
+        .card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+    
+        .btn {
+            display: inline-block;
+            background-color: #F4A950;
+            color: #2A5D50;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    
+        .btn:hover {
+            background-color: #d89240;
+        }
+    
+        footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+    
+        .illustration img {
+            max-width: 100%;
+            height: auto;
+        }
+    
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2A5D50;
+            padding: 1rem 2rem;
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    
+        .navbar .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #F4A950;
+            font-weight: 700;
+        }
+    
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .nav-links li {
+            display: inline;
+        }
+    
+        .nav-links a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+    
+        .nav-links a:hover {
+            color: #F4A950;
+        }
+    
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.3rem;
+        }
+    
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #FFFFFF;
+            border-radius: 2px;
+        }
+    
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+    
+            .nav-links {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #2A5D50;
+                width: 100%;
+                transform: translateY(-100%);
+                display: none;
+            }
+    
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+            }
+    
+            .nav-links li {
+                text-align: center;
+                margin: 1rem 0;
+            }
+    
+            .stars img, .zigzag img, .main-illustration img {
+                width: 50px;
+                height: auto;
+            }
+    
+            .main-illustration .main-globe {
+                max-width: 120px;
+                height: auto;
+            }
+    
+            .container {
+                padding: 1rem;
+            }
+    
+            h1 {
+                font-size: 2.5rem;
+                padding: 0.5rem 1rem;
+            }
+    
+            .subtitle {
+                font-size: 1.3rem;
+            }
+    
+            .card {
+                width: 200px;
+            }
+    
+            .cards {
+                gap: 1rem;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .stars img, .zigzag img, .main-illustration img {
+                width: 40px;
+                height: auto;
+            }
+    
+            .main-illustration .main-globe {
+                max-width: 100px;
+                height: auto;
+            }
+    
+            .zigzag img, .stars img {
+                display: inline-block;
+            }
+        }
+
+        .description {
+        font-size: 1.2rem;
+        margin: 1rem 0 2rem;
+        color: #F4A950;
+    }
+
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .toggle-button {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #F4A950;
+        color: #2A5D50;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .toggle-button:hover {
+        background-color: #d89240;
+    }
+
+    .toggle-button.active {
+        background-color: #2A5D50;
+        color: #F4A950;
+    }
+
+    .toggle-content {
+        font-size: 1rem;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    .card-container {
+        display: flex; /* Align cards in a row */
+        flex-direction: row; /* Horizontal layout */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        gap: 20px; /* Add spacing between cards */
+        padding: 10px;
+    }
+
+    .card-container::-webkit-scrollbar {
+        height: 8px; /* Scrollbar height */
+    }
+
+    .card-container::-webkit-scrollbar-thumb {
+        background: #ccc; /* Scrollbar color */
+        border-radius: 4px;
+    }
+
+    .card-container::-webkit-scrollbar-track {
+        background: #f6f6f6;
+    }
+
+    .card {
+        flex: 0 0 auto; /* Prevent cards from shrinking */
+        width: 300px; /* Set a consistent card width */
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a polished look */
+        border-radius: 8px; /* Smooth corners */
+        background: #fff;
+    }
+
+    .card img {
+        width: 100%; /* Make images responsive */
+        height: 200px; /* Set a fixed height for images */
+        object-fit: cover; /* Crop images to fit the card */
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .card-body {
+        padding: 15px;
+        text-align: center; /* Center-align the content inside the cards */
+    }
+
+    h3 {
+        text-align: left;
+        font-weight: bold;
+        font-family: 'Ubuntu', sans-serif;
+    }
 
         .products-container {
             display: grid;
@@ -154,43 +467,85 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Mwanga</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+        <div class="logo">Mwanga.</div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
+    <div class="grid"></div>
+    <div class="container">
+        <div class="spacer"></div>
 
-    <header class="header">
-        <h1>Our Products</h1>
-        <p>Explore our range of renewable energy solutions</p>
-    </header>
+        <header class="header">
+            <h1>Our Products</h1>
+            <p>Explore our range of renewable energy solutions</p>
+        </header>
+    
+        <div class="products-container">
+            <div class="product-card">
+                <img src="static/imageA.png">
+                <h3>Compact Energy Box</h3>
+                <p>Perfect for small devices and on-the-go power needs.</p>
+                <a href="product-details.html" class="btn">View Details</a>
+            </div>
+            <div class="product-card">
+                <img src="static/imageB.png" alt="Product 2">
+                <h3>Compact Plus Box</h3>
+                <p>Power larger devices with our versatile energy solution.</p>
+                <a href="product-details.html" class="btn">View Details</a>
+            </div>
+            <div class="product-card">
+                <img src="static/imageC.png" alt="Product 3">
+                <h3>Solar Kit</h3>
+                <p>A complete renewable energy solution for outdoor adventures.</p>
+                <a href="product-details.html" class="btn">View Details</a>
+            </div>
+        </div>
 
-    <div class="products-container">
-        <div class="product-card">
-            <img src="product1.jpg" alt="Product 1">
-            <h3>Compact Energy Box</h3>
-            <p>Perfect for small devices and on-the-go power needs.</p>
-            <a href="product-details.html" class="btn">View Details</a>
+
+        <div id="toggle-content" class="toggle-content">
         </div>
-        <div class="product-card">
-            <img src="product2.jpg" alt="Product 2">
-            <h3>Compact Plus Box</h3>
-            <p>Power larger devices with our versatile energy solution.</p>
-            <a href="product-details.html" class="btn">View Details</a>
-        </div>
-        <div class="product-card">
-            <img src="product3.jpg" alt="Product 3">
-            <h3>Solar Kit</h3>
-            <p>A complete renewable energy solution for outdoor adventures.</p>
-            <a href="product-details.html" class="btn">View Details</a>
-        </div>
+        <div class="spacer"></div> 
+
+        
     </div>
+    <script>
+        const resizeOps = () => {
+            document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+        };
 
-    <footer>
-        <p>&copy; 2024 Mwanga Renewables. All rights reserved.</p>
-    </footer>
+        resizeOps();
+        window.addEventListener("resize", resizeOps);
+
+        // Toggle menu visibility for hamburger menu
+        const toggleMenu = () => {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        };
+
+             // JavaScript to handle the toggle
+             const powerBankButton = document.getElementById('powerBankButton');
+        const solarKitButton = document.getElementById('solarKitButton');
+        const toggleContent = document.getElementById('toggleContent');
+
+        powerBankButton.addEventListener('click', () => {
+            toggleContent.textContent = 'Explore our range of power banks, perfect for on-the-go energy needs.';
+            powerBankButton.classList.add('active');
+            solarKitButton.classList.remove('active');
+        });
+
+        solarKitButton.addEventListener('click', () => {
+            toggleContent.textContent = 'Discover our solar kits, ideal for sustainable home or business energy solutions.';
+            solarKitButton.classList.add('active');
+            powerBankButton.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
