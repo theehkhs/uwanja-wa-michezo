@@ -164,7 +164,7 @@
             padding: 0.8rem 1.5rem;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 10px;
             transition: background-color 0.3s;
         }
     
@@ -330,7 +330,7 @@
     .toggle-button {
         padding: 0.8rem 1.5rem;
         border: none;
-        border-radius: 5px;
+        border-radius: 10px;
         background-color: #F4A950;
         color: #2A5D50;
         font-weight: bold;
@@ -463,6 +463,42 @@
             color: #FFFFFF;
             margin-top: 2rem;
         }
+        .button {
+    display: inline-block;
+    background-color: #FFFFFF; /* White background */
+    color: #2A5D50; /* Dark green text color */
+    font-family: 'Roboto', sans-serif; /* Font family */
+    font-weight: bold;
+    font-size: 1rem; /* Font size */
+    padding: 0.8rem 1.5rem; /* Padding for a balanced look */
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    border: 2px solid #2A5D50; /* Dark green border */
+    border-radius: 12px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for buttons */
+    transition: all 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.button:hover {
+    background-color: #F4F9F4; /* Slightly tinted background on hover */
+    color: #1F4636; /* Darker green for text on hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Deeper shadow */
+}
+
+.button:active {
+    transform: scale(0.98); /* Slightly shrink button when clicked */
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow on click */
+}
+
+.button:disabled {
+    background-color: #f5f5f5; /* Light gray for disabled state */
+    color: #bdbdbd; /* Faded text color */
+    border-color: #bdbdbd; /* Faded border */
+    cursor: not-allowed; /* Indicate disabled button */
+    opacity: 0.7; /* Make disabled button less vibrant */
+}
+
     </style>
 </head>
 <body>
@@ -489,44 +525,57 @@
         </header>
     
         <div class="products-container">
-            <div class="product-card">
-                <img src="static/image-pack.png" alt="Compact Energy Box">
-                <h3>Compact Energy Box</h3>
-                <p>Perfect for small devices and on-the-go power needs.</p>
-                <div class="power-details">
-                    <span class="material-icons">phone_android</span>
-                    <p>Charges smartphones for up to 48 hours.</p>
-                    <span class="material-icons">light</span>
-                    <p>Powers LED lights for 24 hours.</p>
-                </div>
-                <a href="product-details.html" class="btn">View Details</a>
-            </div>
-        
+
             <div class="product-card">
                 <img src="static/image-pack.png" alt="Compact Plus Box">
-                <h3>Compact Plus Box</h3>
+                <h3>Compact R550 pm</h3>
                 <p>Power larger devices with our versatile energy solution.</p>
                 <div class="power-details">
                     <span class="material-icons">laptop</span>
                     <p>Powers laptops for up to 10 hours.</p>
                     <span class="material-icons">tv</span>
                     <p>Powers small TVs for 8 hours.</p>
+                    <button class="button">Learn More</button>
                 </div>
-                <a href="product-details.html" class="btn">View Details</a>
+                <div class="spacer"></div> 
+            
+                
+            </div>
+
+
+            <div class="product-card">
+                <img src="static/image-pack.png" alt="Compact Plus Box">
+                <h3>Compact plus R1,400 pm</h3>
+                <p>Power larger devices with our versatile energy solution.</p>
+                <div class="power-details">
+                    <span class="material-icons">laptop</span>
+                    <p>Powers laptops for up to 10 hours.</p>
+                    <span class="material-icons">tv</span>
+                    <p>Powers small TVs for 8 hours.</p>
+                    <button class="button">Learn More</button>
+                </div>
+                <div class="spacer"></div> 
+            
+                
             </div>
         
-            <!-- <div class="product-card">
-                <img src="static/image-pack.png" alt="Solar Kit">
-                <h3>Solar Kit</h3>
-                <p>A complete renewable energy solution for outdoor adventures.</p>
+            <div class="product-card">
+                <img src="static/image-pack.png" alt="Compact Plus Box">
+                <h3>Premium Kit R1,999 pm</h3>
+                <p>Power larger devices with our versatile energy solution.</p>
                 <div class="power-details">
-                    <span class="material-icons">battery_charging_full</span>
-                    <p>Charges multiple devices simultaneously during the day.</p>
-                    <span class="material-icons">outdoor_grill</span>
-                    <p>Powers small appliances for up to 12 hours.</p>
+                    <span class="material-icons">laptop</span>
+                    <p>Powers laptops for up to 10 hours.</p>
+                    <span class="material-icons">tv</span>
+                    <p>Powers small TVs for 8 hours.</p>
+                    <button class="button">Learn More</button>
                 </div>
-                <a href="product-details.html" class="btn">View Details</a>
-            </div> -->
+                <div class="spacer"></div> 
+            
+                
+            </div>
+
+
         </div>
 
         <div id="toggle-content" class="toggle-content">
