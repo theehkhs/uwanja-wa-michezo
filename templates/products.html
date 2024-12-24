@@ -543,6 +543,81 @@
     cursor: pointer;
 }
 
+.form-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2A5D50;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group input[type="file"] {
+    border: none;
+    padding: 0;
+}
+
+.camera-container {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#videoElement {
+    width: 100%;
+    border-radius: 4px;
+    background: #f0f0f0;
+}
+
+#captureButton {
+    margin-top: 10px;
+    background-color: #2A5D50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#capturedImage {
+    display: none;
+    width: 100%;
+    max-width: 320px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #F4A950;
+    color: #2A5D50;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #d89240;}
+
     </style>
 </head>
 <body>
@@ -631,14 +706,51 @@
         </div>
         <div class="spacer"></div> 
         <!-- Modal Structure -->
-<div id="productModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h2 id="modalTitle">Product Title</h2>
-        <img id="modalImage" src="" alt="Product Image" style="width: 100%; max-height: 200px; object-fit: cover;">
-        <p id="modalDescription">Product Description</p>
-    </div>
-</div>
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="modalTitle">Product Title</h2>
+                <img id="modalImage" src="" alt="Product Image" style="width: 100%; max-height: 200px; object-fit: cover;">
+                <p id="modalDescription">Product Description</p>
+                
+                <div class="form-container">
+                    <form id="userDetailsForm">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="surname">Surname:</label>
+                            <input type="text" id="surname" name="surname" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idNumber">ID Number:</label>
+                            <input type="text" id="idNumber" name="idNumber" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bankStatement">Upload Bank Statement:</label>
+                            <input type="file" id="bankStatement" name="bankStatement" accept=".pdf,.doc,.docx" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Face Recognition:</label>
+                            <div class="camera-container">
+                                <video id="videoElement" autoplay playsinline></video>
+                                <canvas id="canvas" style="display: none;"></canvas>
+                                <img id="capturedImage" alt="Captured image">
+                                <button type="button" id="captureButton">Take Photo</button>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
 
 <!-- Modal Structure -->
 <div id="productModal" class="modal">
@@ -713,6 +825,67 @@ window.addEventListener("click", (event) => {
     if (event.target === modal) {
         modal.style.display = "none";
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('videoElement');
+    const canvas = document.getElementById('canvas');
+    const captureButton = document.getElementById('captureButton');
+    const capturedImage = document.getElementById('capturedImage');
+    
+    // Access the camera
+    async function startCamera() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = stream;
+        } catch (err) {
+            console.error("Error accessing camera:", err);
+        }
+    }
+    
+    // Capture photo
+    captureButton.addEventListener('click', () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0);
+        capturedImage.src = canvas.toDataURL('image/png');
+        capturedImage.style.display = 'block';
+        video.style.display = 'none';
+    });
+    
+    // Form submission
+    document.getElementById('userDetailsForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Here you would typically send the form data to your server
+        console.log('Form submitted');
+        // You can access form data like this:
+        const formData = new FormData(e.target);
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+        // Add your form submission logic here
+    });
+    
+    // Start camera when modal opens
+    document.querySelectorAll('.learn-more-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            startCamera();
+        });
+    });
+    
+    // Stop camera when modal closes
+    function stopCamera() {
+        if (video.srcObject) {
+            video.srcObject.getTracks().forEach(track => track.stop());
+        }
+    }
+    
+    document.querySelector('.close-button').addEventListener('click', stopCamera);
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            stopCamera();
+        }
+    });
 });
 
 
