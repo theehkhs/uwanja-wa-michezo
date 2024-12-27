@@ -248,6 +248,35 @@ def get_data():
     # return jsonify({'basic_data': basic_data}
     return render_template('category.html', basic_data=basic_data)
 
+@app.route('/submit_user_details', methods=['POST'])
+def submit_user_details():
+    try:
+        # Get data from the form
+        # first_name = request.form.get('firstName')
+        # surname = request.form.get('surname')
+        # email = request.form.get('email')
+        # id_number = request.form.get('idNumber')
+        first_name = "Neo"
+        surname = "Sebanze"
+        email = "Neos25722@gmail.com"
+        id_number = "9705306011086"
+        
+        # Save the data to Firestore
+        user_data = {
+            "first_name": first_name,
+            "surname": surname,
+            "email": email,
+            "id_number": id_number
+        }
+        print("We are printing the Data",user_data)
+        db.collection("users").document(email).set(user_data)
+        
+        return jsonify({"success": True, "message": "Information successfully saved!"}), 200
+    except Exception as e:
+        print(f"Error saving user details: {e}")
+        return jsonify({"success": False, "message": "Failed to save information."}), 500
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
